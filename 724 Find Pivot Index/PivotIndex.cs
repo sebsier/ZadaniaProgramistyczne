@@ -9,7 +9,6 @@ namespace ZadaniaProgramistyczne._724_Find_Pivot_Index
 {
     internal class PivotIndex
     {
-        //Success
         //Runtime: 601 ms, faster than 14.28% of C# online submissions for Find Pivot Index.
         //Memory Usage: 41.3 MB, less than 22.66% of C# online submissions for Find Pivot Index.
         public int PivotIndexJeden(int[] nums)
@@ -33,7 +32,7 @@ namespace ZadaniaProgramistyczne._724_Find_Pivot_Index
             }
             return -1;
         }
-        //Success
+
         //Runtime: 1693 ms, faster than 5.02% of C# online submissions for Find Pivot Index.
         //Memory Usage: 41.2 MB, less than 25.51% of C# online submissions for Find Pivot Index.
         public int PivotIndexDwa(int[] nums)
@@ -60,8 +59,7 @@ namespace ZadaniaProgramistyczne._724_Find_Pivot_Index
             }
             return -1;
         }
-
-        //Success
+        
         //Runtime: 341 ms, faster than 21.43% of C# online submissions for Find Pivot Index.
         //Memory Usage: 46 MB, less than 9.68% of C# online submissions for Find Pivot Index.
         public int PivotIndexTrzy(int[] nums)
@@ -80,13 +78,29 @@ namespace ZadaniaProgramistyczne._724_Find_Pivot_Index
             return -1;
         }
 
-        public int PivotIndexcCztery(int[] nums)
+        //Runtime: 212 ms, faster than 31.76% of C# online submissions for Find Pivot Index.
+        //Memory Usage: 39.7 MB, less than 79.83% of C# online submissions for Find Pivot Index.
+        public int PivotIndexCztery(int[] nums)
         {
-            for (int i = nums.Length/2; i < nums.Length; i++)
-            {
+            var fullSum = 0;
+            foreach (int num in nums) fullSum += num;
 
+            var runningSum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (runningSum == fullSum - runningSum - nums[i])
+                    return i;
+
+
+                runningSum += nums[i];
             }
             return -1;
+        }
+
+        public int PivotIndexCztery(int[] nums)
+        {
+ 
+            //JAK BINARY SEARCH - zlapac sume, wrzucic i w polowie i szukac w lewo czy suma < / > polowa sumy, przesunac index w wieksza strone (moze w polowe wiekszej strony?)
         }
 
         public void Test()
